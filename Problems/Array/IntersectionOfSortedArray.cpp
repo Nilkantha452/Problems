@@ -1,7 +1,7 @@
 /* Find Intersection of two arrays. */
 #include <iostream>
 #include <vector>
-vector<int> FindIntersection(vector<int>& arr1, vector<int>& arr2, int m, int n)
+std::vector<int> FindIntersection(std::vector<int>& arr1, std::vector<int>& arr2, int m, int n)
 {
     vector<int> ans;
     int i = 0, j = 0;
@@ -30,8 +30,8 @@ vector<int> FindIntersection(vector<int>& arr1, vector<int>& arr2, int m, int n)
 
 int main()
 {
-    vector<int> arr1 { 1, 2, 2, 3, 4, 5, 6, 7, 10 };
-    vector<int> arr2 { 1, 2, 2, 5, 12 };
+    std::vector<int> arr1 { 1, 2, 2, 3, 4, 5, 6, 7, 10 };
+    std::vector<int> arr2 { 1, 2, 2, 5, 12 };
     int m = sizeof(arr1) / sizeof(int);
     int n = sizeof(arr2) / sizeof(int);
     vector<int> res = FindIntersection(arr1, arr2, m, n);
