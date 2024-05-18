@@ -1,6 +1,64 @@
-/* Do a pre-order traversal in a binary tree. */
+/* Do an preorder traversal in a binary tree. */
 
 #include <iostream>
+#include <vector>
+#include <stack>
+
+struct TreeNode
+{
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode()
+    {
+        val = 0;
+        left = nullptr;
+        right = nullptr;
+    }
+    TreeNode(int value)
+    {
+        val = value;
+        left = nullptr;
+        right = nullptr;
+    }
+};
+
+void preorderTraversal(TreeNode* root)
+{
+    if (root == nullptr)
+    {
+        return;
+    }
+    std::cout << root->val << " ";
+    preorderTraversal(root->left);
+    preorderTraversal(root->right);
+}
+
+std::vector<int> preorderTraversalEx(TreeNode* root)
+{
+    std::vector<int> ans;
+    std::stack<TreeNode*> st;
+    while (1)
+    {
+        if (root != nullptr)
+        {
+            ans.push_back(root->val);
+            st.push(root);
+            root = root->left;
+        }
+        else
+        {
+            if (st.size() == 0)
+            {
+                break;
+            }
+            TreeNode* node = st.top();
+            st.pop();
+            root = node->right;
+        }
+    }
+    return ans;
+}
 
 int main()
 {
@@ -19,7 +77,7 @@ int main()
     root->right->right = rrr;
     TreeNode* rrlr = new TreeNode(8);
     root->right->left->right = rrlr;
-     \]
+
     preorderTraversal(root);
     std::cout << std::endl;
     std::vector<int> ans = preorderTraversalEx(root);
